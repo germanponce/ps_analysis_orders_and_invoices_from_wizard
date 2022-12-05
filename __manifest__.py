@@ -14,7 +14,7 @@
     "depends": ['base','sale','sale_management','point_of_sale','account'],
     'data': [
         'extrafits_view.xml',
-        'report_moves_by_supplier',
+        'report_moves_by_supplier.xml',
         'security/ir.model.access.csv',
     ],
     'installable': True,

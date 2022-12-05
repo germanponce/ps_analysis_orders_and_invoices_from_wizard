@@ -214,9 +214,6 @@
                                 <span  style="font-size:18px;" t-if="o.partner_id">
                                     <b>Proveedor: </b> <span t-field="o.partner_id" />
                                 </span>
-                                <span  style="font-size:18px;" t-if="o.supplier_type">
-                                    <b>Tipo de Proveedor: </b> <span t-field="o.supplier_type" />
-                                </span>
                                 <t t-foreach="o.line_ids" t-as="line">  
 
                                     <table class="table table-condensed" style="font-size:14px;padding: 0px;" t-if="not o.partner_id">
@@ -225,7 +222,7 @@
                                             <strong><span t-field="line.partner_id" /></strong>
                                         </th>
                                         <th>
-                                            <strong>Tipo de Proveedor: <span t-field="line.supplier_type" /></strong>
+                                            <strong>Ref. Proveedor: </strong>
                                         </th>
                                       </tr>
                                       
