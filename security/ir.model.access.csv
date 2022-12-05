@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-invoice_sale_analysis_total_access,invoice.sale.analysis.total,model_invoice_sale_analysis_total,,1,1,1,1
+ps_wizard_report_moves_by_supplier_access,ps.wizard.report.moves.by.supplier,model_ps_wizard_report_moves_by_supplier,,1,1,1,1
+ps_wizard_report_moves_by_supplier_access,ps.wizard.report.moves.by.supplier,model_ps_wizard_report_moves_by_supplier,,1,1,1,1
+ps_table_report_moves_by_supplier_access,ps.table.report.moves.by.supplier,model_ps_table_report_moves_by_supplier,,1,1,1,1
+ps_table_report_moves_by_supplier_header_access,ps.table.report.moves.by.supplier.header,model_ps_table_report_moves_by_supplier_header,,1,1,1,1

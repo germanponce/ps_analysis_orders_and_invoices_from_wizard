@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+    <!-- Analisis -->
+
+        <record id="ps_table_report_moves_by_supplier_tree" model="ir.ui.view">
+            <field name="name">ps.table.report.moves.by.supplier.tree</field>
+            <field name="model">ps.table.report.moves.by.supplier</field>
+            <field name="arch" type="xml">
+                <tree string="Pagos por Proveedor" create="false" delete="false">
+                    <field name="partner_id" readonly="1"/>
+                    <field name="supplier_amount_total" readonly="1"/>
+                    <field name="user_id" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="ps_table_report_moves_by_supplier_form" model="ir.ui.view">
+            <field name="name">ps.table.report.moves.by.supplier.form</field>
+            <field name="model">ps.table.report.moves.by.supplier</field>
+            <field name="arch" type="xml">
+                <form string="Movimiento de Cliente" create="false" delete="false">
+                    <sheet>
+                        <group>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="user_id" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="line_ids" nolabel="1" readonly="1">
+                                <tree string="Detalles" editable="bottom">
+                                    <field name="date" readonly="1" />
+                                    <field name="invoice_name" readonly="1" />
+                                    <field name="concept" readonly="1" />
+                                    <field name="tags" readonly="1" />
+                                    <!-- <field name="debit" readonly="1" />
+                                    <field name="credit" readonly="1" />
+                                    <field name="residual" readonly="1" /> -->
+                                    <field name="payment_amount" readonly="1" />
+                                </tree>
+                            </field>
+                        </group>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="supplier_amount_total">
+                            <field name="supplier_amount_total" />
+                        </group>
+                        <newline />
+                    </sheet>
+                    
+                </form>
+            </field>
+        </record>
+
+
+        <record id="ps_table_report_moves_by_supplier_search" model="ir.ui.view">
+            <field name="name">ps.table.report.moves.by.supplier.serch</field>
+            <field name="model">ps.table.report.moves.by.supplier</field>
+            <field name="arch" type="xml">
+                <search string="Pagos por Proveedor">
+                    <field name="partner_id" readonly="1"/>
+                    <field name="supplier_type" readonly="1"/>
+                    <field name="user_id" readonly="1"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_ps_table_report_moves_by_supplier" model="ir.actions.act_window">
+            <field name="name">Pagos por Proveedor</field>
+            <field name="res_model">ps.table.report.moves.by.supplier</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="ps_table_report_moves_by_supplier_tree"/>
+        </record>
+
+
+
+    <!-- Wizard -->
+
+    <record id="ps_wizard_report_moves_by_supplier_form" model="ir.ui.view">
+      <field name="name">ps.wizard.report.moves.by.supplier</field>
+      <field name="model">ps.wizard.report.moves.by.supplier</field>
+      <field name="arch" type="xml">
+        <form string="Reporte Pagos por Proveedor">
+            <sheet>
+
+                <group string="Periodo">
+                    <group>
+                        <field name="date" required="1"/>
+                    </group>
+                    <group>
+                        <field name="date_stop" required="1"/>
+                    </group>
+                </group>
+
+                <group string="Filtros">
+                    <group>
+                        <field name="partner_id" options="{'no_create':True, 'no_create_edit': True}"/>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+                <group>
+                    <field name="output_type" required="1" />
+                </group>
+                <footer>
+                    <button name="get_current_report" type="object" string="Generar Reporte" class="oe_highlight" icon="fa-file-pdf-o"/>
+                    <button special="cancel" string="Cancelar" type="object" class="oe_link oe_inline" icon="fa-window-close"/>
+                </footer>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="ps_wizard_report_moves_by_supplier_act" model="ir.actions.act_window">
+        <field name="name">Pagos por Proveedor</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">ps.wizard.report.moves.by.supplier</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context"></field>        
+    </record>
+      
+    <menuitem id="ps_wizard_report_moves_by_supplier_menu"
+              name="Pagos por Proveedor"
+              parent="sale.menu_sale_report"
+              action="ps_wizard_report_moves_by_supplier_act" 
+              sequence='701'/>
+
+
+
+    </data>
+</odoo>
